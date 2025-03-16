@@ -101,8 +101,17 @@ padding-bottom: 100px; /* Erhöhen Sie diesen Wert bei Bedarf */
       flex: 1;
     }
 
+      
+      .product-area, .order-area {
+  flex-grow: 1;
+  flex-basis: 80%;
+}
+
+      
+      
           .product-area {
-      flex: 1;
+order: 2;
+              flex: 1;
       overflow-y: auto;
       padding: 0px;
     }
@@ -137,7 +146,8 @@ padding-bottom: 100px; /* Erhöhen Sie diesen Wert bei Bedarf */
 
             
     .order-area {
-      flex: 1;
+order: 1;
+        flex: 1;
         overflow-x: hidden;
       overflow-y: auto;
       padding: 0px;
@@ -844,12 +854,12 @@ input[type="number"] {
 
  <script>
     const products = [
-      { name: "Bagel mit veganer Creme", price: 5.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bagel.png" },
+      { name: "Bagel mit veganer Creme.", price: 5.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bagel.png" },
       { name: "Bandnudeln mit Tomaten-Gemüseragout", price: 14, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Gemuesenudeln.png" },
       { name: "Bratwurst mit Brötchen", price: 3.2, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bratwurst.png" },
       { name: "Bratwurst mit Pommes", price: 5.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bratwurst_Pommes.png" },
       { name: "Bratwürste mit Kartoffelsalat", price: 8.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bratwurst_Kartoffelsalat.png" },
-      { name: "Camembert gebacken", price: 9, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Camembert.png" }, 
+      { name: "Camembert geback.", price: 9, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Camembert.png" }, 
       { name: "Ciabatta Caprese", price: 3.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Ciabatta_Caprese.png" },
       { name: "Currywurst mit Brötchen", price: 4.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Curry_Broetchen.png" },
       { name: "Currywurst mit Pommes", price: 6.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Curry_Pommes.png" },
