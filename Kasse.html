@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>🎊 JBO feiert mit Freunden ♥️ </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      touch-action: manipulation;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+            
+    .footer-message i {
+      position: left;
+      margin-right: 5px;
+      top: 0;
+      left: 0;
+      font-size: 14px;
+      color: #101A4B;
+    }
+    
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      .header, .header *,
+      #orderTable, #orderTable * {
+        visibility: visible;
+      }
+      
+        .header {
+            background: linear-gradient(to bottom, #D8D8D8, #585858);
+            position: relative;
+  text-align: center;
+  padding-top: 1px;
+            background-color: #f0f0f0;
+      padding: 1px;
+      
+    }
+        
+h1 {
+  background-image: linear-gradient(to right, #FF0000, #FF0000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: #FF0000;
+  display: inline-block;
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  h1 {
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+
+.info-text {
+  border: 3px solid #ccc;
+  background-color: #f0f0f0;
+  top: 50px;
+  padding: 5px;
+}
+        
+      h3 {
+        text-align: left;
+      }
+      #orderTable {
+        position: relative;
+        top: 10px;
+        left: 0;
+        width: 100%;
+        page-break-inside: avoid;
+      }
+      #orderTable th:last-child,
+      #orderTable td:last-child {
+        display: none;
+      }
+
+
+        
+      .product-buttons-container,
+      .button-container,
+      #pfandModal {
+        display: none;
+      }
+    }
+ 
+  .main-container {
+padding-bottom: 100px; /* Erhöhen Sie diesen Wert bei Bedarf */
+      display: flex;
+      flex: 1;
+    }
+
+          .product-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0px;
+    }
+
+    .product-area .tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-area .tab-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.product-area .tab-button.active {
+  background-color: #ddd;
+}
+  
+  .tab-button[data-tab="getraenke"] {
+  background-color: #377EBF;
+  color: white;
+}
+
+.tab-button[data-tab="essen"] {
+  background-color: #E74C3C;
+  color: white;
+}
+
+
+    
+      
+      
+    .order-area {
+      flex: 1;
+        overflow-x: hidden;
+      overflow-y: auto;
+      padding: 0px;
+    }
+
+      
+      .order-area h3 {
+  font-size: 1.0em; /* Passen Sie diesen Wert an, um die gewünschte Größe zu erhalten */
+}
+
+      
+      
+      
+      
+      
+  .payment-area {
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  position: fixed;
+  bottom: 30px; /* Erhöht die Position */
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.payment-area h3 {
+  font-size: 16px; /* Kleinere Schriftgröße */
+  margin: 5px 0;
+}
+
+
+.header {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0;
+  background-color: #f0f0f0;
+}      
+      
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #101A4B;
+  position: relative;
+  z-index: 2;
+}
+
+      .header img.logo {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 50px;
+  height: auto;
+  z-index: 1;
+}
+      
+      
+      
+      
+      
+    .header .untertitel {
+      font-size: 16px;
+      margin: 0 0 10px 0;
+    }
+    .header .info-text {
+      margin: 0;
+      font-weight: bold;
+      font-size: 16px;
+      border: 4px solid #ccc;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+    h3 {
+      text-align: center;
+    }  
+      
+      /* Entfernt die Pfeile für Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Entfernt die Pfeile für Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+      
+  .tabs {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+        margin-bottom: 5px; /* Reduzieren Sie diesen Wert nach Bedarf */
+}
+}
+
+.tab-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.tab-button.active[data-tab="getraenke"] {
+  background-color: #fff;
+  border-bottom: 3px solid #377EBF;
+}
+
+.tab-button.active[data-tab="essen"] {
+  background-color: #fff;
+  border-bottom: 3px solid #E74C3C;
+}
+
+.tab-content {
+  display: none;
+  padding: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.tab-content.active {
+  padding-top: 5px; /* Reduzieren Sie diesen Wert nach Bedarf */
+    display: block;
+}
+    
+.product-buttons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+ 
+      
+      .category-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0;
+      color: #101A4B;
+    }
+   .product-buttons-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1px; /* Einheitlicher Abstand */
+  justify-content: center;
+}
+      
+      
+  .button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+}
+
+.product-button {
+  width: 65px;
+  height: 65px;
+  border-radius: 20px;
+  border: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.button-label {
+  margin-top: 5px;
+  font-size: 12px;
+  text-align: center;
+  color: black;
+  max-width: 100px;
+  word-wrap: break-word;
+}
+
+.essen-button {
+  background-color: #E74C3C;
+}
+
+.getraenke-button {
+  background-color: #377EBF;
+}
+
+
+      
+   body:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom, #d3d3d3, #a0a0a0);
+}
+   
+      
+ 
+      
+      .product-button:hover {
+      transform: scale(1.05);
+    }
+    .product-button img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 5px;
+    }
+    .product-button span {
+      font-size: 10px;
+      text-align: center;
+      word-wrap: break-word;
+      max-width: 100%;
+    }
+    .essen-button {
+      background-color: #E74C3C;
+      color: #FFFFFF;
+    }
+    .essen-button:hover {
+      background-color: #C1351D;
+    }
+    .getraenke-button {
+      background-color: #377EBF;
+      color: #FFFFFF;
+    }
+    .getraenke-button:hover {
+      background-color: #1F4D77;
+    }
+
+    #orderTable, #orderTable th, #orderTable td {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+      padding: 10px;
+      background-color: #f8f8f8;
+      box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+      
+    td:nth-child(3),
+    td:nth-child(4),
+    td:nth-child(5),
+    td:nth-child(6),
+    td:nth-child(7) {
+      text-align: right;
+      white-space: nowrap;
+    }    
+   
+    .order-summary {
+      margin-top: 20px;
+      border-top: 2px solid #ccc;
+      padding-top: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+
+      
+.button-container {
+  display: flex;
+  justify-content: center; /* Zentriert die mittleren Buttons */
+  align-items: center;
+  gap: 10px; /* Abstand zwischen den Buttons */
+  width: 100%;
+  position: relative; /* Erlaubt absolute Positionierung */
+}
+
+#newCustomerBtn {
+  position: absolute;
+  left: 0; /* Setzt "Neuer Kunde" ganz links */
+}
+
+#clearOrdersBtn {
+  position: absolute;
+  right: 0; /* Setzt "nur Admin darf löschen" ganz rechts */
+}
+
+.button-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #377EBF;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #1F4D77;
+}
+      
+      
+      #paymentBtn {
+  background-color: #E74C3C; /* Rot */
+  color: white; /* Weißer Text für besseren Kontrast */
+}
+
+#paymentBtn:hover {
+  background-color: #C1351D; /* Dunkleres Rot beim Hover */
+}
+
+      
+      
+      
+    .pfand-button {
+      background-color: #C0392B;
+      color: white;
+    }
+
+    .highlight-amount {
+      background-color: #FFCCCB;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .pfand-container {
+      display: flex;
+      gap: 1px;
+    }
+
+.pfand-items {
+  display: grid;
+  gap: 5px; /* Verringerter Abstand zwischen den Auswahlpunkten */
+}
+
+.pfand-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1px; /* Reduzierter Abstand zwischen den einzelnen Pfand-Items */
+  padding: 2px; /* Reduzierte Polsterung innerhalb der Pfand-Items */
+}
+      
+      
+      
+    #pfandModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+ #pfandModalContent {
+  width: 80%;
+  max-width: 280px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  background-color: #f8f8f8;
+}
+
+.pfand-item {
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+    .pfand-item label {
+      font-size: 1em;
+      margin: 5px 0;
+    }
+
+.quantity-input button {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.quantity-input input {
+  width: 50px;
+  height: 40px;
+  font-size: 18px;
+  text-align: center;
+}
+
+
+    #pfandModalContent button.action-btn {
+      padding: 2px 5px;
+      font-size: 1.1em;
+    }
+
+.quantity-input {
+  display: flex;
+  align-items: center;
+  gap: 3px; /* Verringert den Abstand zwischen den Buttons und dem Input-Feld */
+}
+    
+    .pfand-modal-close-button {
+      margin-left: auto;
+    }
+    
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+      
+    .quantity-btn {
+  width: 30px;
+  height: 30px;
+  font-size: 1em;
+  padding: 0;
+}
+
+input[type="number"] {
+  width: 40px;
+  margin: 0 5px;
+}  
+      
+      .ant-modal-body {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.action-btn {
+  border: none;
+  padding: 8px 15px; /* Reduzierte Polsterung für kleinere Buttons */
+  font-size: 14px; /* Kleinere Schriftgröße */
+  border-radius: 4px; /* Leicht abgerundete Ecken */
+  cursor: pointer;
+  color: white; /* Weiße Schrift für besseren Kontrast */
+  transition: opacity 0.3s ease;
+}
+
+ .action-btn:hover {
+  opacity: 0.8; /* Leichter Hover-Effekt */
+}  
+      
+      .calculate-btn {
+  background-color: #4CAF50; /* Grüner Hintergrund */
+}
+
+.close-btn {
+  background-color: #f44336; /* Roter Hintergrund */
+}
+
+
+      
+      
+    #pfandModalContent button.action-btn {
+      padding: 5px 10px;
+      font-size: 1.2em;
+      border-radius: 3px;
+      border: 5px;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    #pfandModalContent button.action-btn:active {
+      transform: scale(0.95);
+    }
+
+    
+ h2 {
+  font-size: 1.2em; /* Kleinere Schriftgröße */
+  margin-top: 0.5em; /* Den Abstand nach oben verringern, falls gewünscht */
+}
+      
+      .payment-dialog {
+      position: fixed;
+          padding-top: 10px; /* Reduzieren Sie diesen Wert nach Bedarf */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      z-index: 1000;
+      width: 200px;
+    }
+
+    .payment-header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .payment-display {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-size: 1.2em;
+    }
+
+    .numpad-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .numpad-btn {
+      padding: 15px;
+      font-size: 1.2em;
+      border: none;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .numpad-btn:hover {
+      background-color: #e0e0e0;
+    }
+
+    .payment-controls {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .payment-controls button {
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .confirm-btn {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .cancel-btn {
+      background-color: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+  
+      
+
+      
+   <h1>45 Jahre Jugendblasorchester Kürnach</h1>
+    <img src="https://matze45jub.github.io/Bestell_Druck_Export/Images/logo.png" alt="Logo" class="logo">
+  </div>
+
+ <div class="main-container">
+  <div class="product-area">
+    <div class="tabs">
+      <button class="tab-button active" data-tab="getraenke">Getränke</button>
+      <button class="tab-button" data-tab="essen">Essen</button>
+    </div>
+    <div id="getraenke" class="tab-content active">
+      <div class="product-buttons-container">
+        <!-- Getränke-Buttons hier einfügen -->
+      </div>
+    </div>
+    <div id="essen" class="tab-content">
+      <div class="product-buttons-container">
+        <!-- Essen-Buttons hier einfügen -->
+      </div>
+    </div>
+  </div>
+
+    <div class="order-area">
+      <h3 style="color: #E74C3C;">Bestellung</h3>
+      <table id="orderTable">
+        <thead>
+          <tr>
+            <th>Produkt</th>
+            <th>Menge</th>
+            <th>E.-preis (€)</th>
+            <th>E.-pfand (€)</th>
+            <th>G.-preis (€)</th>
+            <th>G.-pfand (€)</th>
+            <th>Gesamt (€)</th>
+            <th>X</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Hier werden die Bestellungen dynamisch eingefügt -->
+        </tbody>
+        <tfoot>
+          <tr id="summenzeile" style="background-color: pink;">
+            <td><span class="highlight-amount">Erläuterung</span></td>
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td><span class="highlight-amount" id="summe-spalte5">0.00</span></td>
+            <td><span class="highlight-amount" id="summe-spalte6">0.00</span></td>
+            <td><span class="highlight-amount" id="summe-spalte7">0.00</span></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+    
+     <div class="payment-area">
+    <h3>
+      Gesamtsumme: <span id="totalSum">0.00</span>€
+      | Pfandrückgabe: <span id="pfandReturnAmount">0.00</span>€ 
+      | <span class="highlight-amount">Zu zahlender Betrag: <span id="amountToPay">0.00</span>€</span>
+      | Zahlung: <span id="paymentAmount">0.00</span>€
+      | Rückgeld: <span id="changeAmount">0.00</span>€
+    </h3>
+
+         
+
+
+         
+         
+    <div class="button-container">
+      <button id="newCustomerBtn" onclick="startNewOrder()">Neuer Kunde</button>
+      <button id="pfandReturnBtn" class="pfand-button" onclick="openPfandModal()">Pfandrückgabe</button>
+      <button id="paymentBtn" onclick="handlePayment()">Zahlung</button>
+      <button id="completeOrderBtn" onclick="completeOrder()">Bestellung abschließen</button>
+      <button id="clearOrdersBtn" onclick="clearAllOrders()" style="background-color: yellow; color: black;">nur Admin darf löschen</button>
+    </div>
+  </div>
+    
+    
+ 
+<div id="pfandModal" class="modal">
+  <div id="pfandModalContent" class="modal-content">
+  <h2 class="modal-title" style="text-align: center;">Pfandrückgabe</h2>
+
+    
+    <div class="pfand-items">
+      <div class="pfand-item">
+        <span class="item-label">🍾 Flasche (1€)</span>
+        <div class="quantity-input">
+          <button onclick="updatePfandQuantity('bottle', -1)" class="quantity-btn minus">-</button>
+          <input type="number" id="bottleQuantity" value="0" readonly>
+          <button onclick="updatePfandQuantity('bottle', 1)" class="quantity-btn plus">+</button>
+        </div>
+      </div>
+
+      <div class="pfand-item">
+        <span class="item-label">🍷 Glas (2€)</span>
+        <div class="quantity-input">
+          <button onclick="updatePfandQuantity('glass', -1)" class="quantity-btn minus">-</button>
+          <input type="number" id="glassQuantity" value="0" readonly>
+          <button onclick="updatePfandQuantity('glass', 1)" class="quantity-btn plus">+</button>
+        </div>
+      </div>
+
+      <div class="pfand-item">
+        <span class="item-label">🍺 Krug (5€)</span>
+        <div class="quantity-input">
+          <button onclick="updatePfandQuantity('jug', -1)" class="quantity-btn minus">-</button>
+          <input type="number" id="jugQuantity" value="0" readonly>
+          <button onclick="updatePfandQuantity('jug', 1)" class="quantity-btn plus">+</button>
+        </div>
+      </div>
+
+      <div class="pfand-item">
+        <span class="item-label">☕️ Tasse (2€)</span>
+        <div class="quantity-input">
+          <button onclick="updatePfandQuantity('cup', -1)" class="quantity-btn minus">-</button>
+          <input type="number" id="cupQuantity" value="0" readonly>
+          <button onclick="updatePfandQuantity('cup', 1)" class="quantity-btn plus">+</button>
+        </div>
+      </div>
+
+      <div class="pfand-item">
+        <span class="item-label">🍽️ Geschirr (5€)</span>
+        <div class="quantity-input">
+          <button onclick="updatePfandQuantity('dish', -1)" class="quantity-btn minus">-</button>
+          <input type="number" id="dishQuantity" value="0" readonly>
+          <button onclick="updatePfandQuantity('dish', 1)" class="quantity-btn plus">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button onclick="calculatePfandReturn()" class="action-btn calculate-btn">Berechnen</button>
+    
+    </div>
+  </div>
+</div>
+
+ <script>
+    const products = [
+      { name: "Bagel mit veganer Creme.", price: 5.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bagel.png" },
+      { name: "Bandnudeln mit Tomaten-Gemüseragout", price: 14, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Gemuesenudeln.png" },
+      { name: "Bratwurst mit Brötchen", price: 3.2, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bratwurst.png" },
+      { name: "Bratwurst mit Pommes", price: 5.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bratwurst_Pommes.png" },
+      { name: "Bratwürste mit Kartoffelsalat", price: 8.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bratwurst_Kartoffelsalat.png" },
+      { name: "Camembert geback.", price: 9, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Camembert.png" }, 
+      { name: "Ciabatta Caprese", price: 3.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Ciabatta_Caprese.png" },
+      { name: "Currywurst mit Brötchen", price: 4.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Curry_Broetchen.png" },
+      { name: "Currywurst mit Pommes", price: 6.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Curry_Pommes.png" },
+      { name: "Fischbrötchen", price: 3, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Fischbroetchen.png" },
+      { name: "Forelle mit Brötchen", price: 13, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Forelle_Broetchen.png" }, 
+      { name: "Forelle mit Kartoffelsalat", price: 15, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Forelle_Kartoffel.png" }, 
+      { name: "Hähnchen (½) mit Brötchen", price: 8, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Haehnchen_Broetchen.png" }, 
+      { name: "Hähnchen (½) mit Pommes", price: 10, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Haehnchen_Pommes.png" }, 
+      { name: "Hamburger", price: 9, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Hamburger.png" }, 
+      { name: "Hamburger und Pommes", price: 11, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Veggie_Pommes.png" }, 
+      { name: "Hochzeitsessen", price: 7.2, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Hochzeitsessen.png" }, 
+      { name: "Kartoffelpuffer", price: 7, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Kartoffelpuffer.png" }, 
+      { name: "Linsenbolognese mit Nudeln", price: 9, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Penne mit Linsen.png" }, 
+       { name: "Mettstange", price: 3.5, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Mettstange.png" }, 
+      { name: "Ochs vom Spieß", price: 14.5, category: "essen", deposit: 5.0, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Ochs vom Spieß.png" }, 
+      { name: "Obatzter mit Brot", price: 4, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Obatzter.png" }, 
+      { name: "Pommes", price: 2.5, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Pommes.png" }, 
+      { name: "Rettichbrot", price: 4, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Rettichbrot.png" },
+      { name: "Spinat-/Semmelknödel", price: 6, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Spinatknoedel.png" },  
+      { name: "Steak mit Brot", price: 4.5, category: "essen", deposit: 5.0, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Steak_Brot.png" },
+       { name: "Steak mit Kartoffelsalat", price: 6.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Steak_Kartoffel.png" },
+       { name: "Steak mit Pommes", price: 6.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Steak_Pommes.png" },
+      { name: "VeggieBurger", price: 8, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Veggieburger.png" }, 
+      { name: "VeggieBurger mit Pommes", price: 10, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Veggie_Pommes.png" },
+       { name: "Weißwürste mit Brezel", price: 7.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Weißwurst.png" },
+       { name: "Wraps", price: 5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Wraps.png" },    
+    { name: "Geschirr-Leer-Bon 5€ 🍽️", price: 0.0, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Geschirr-Bon.png" }, 
+
+
+      
+      { name: "Alkoholfreies Bier", price: 5, category: "getraenke", deposit: 5., image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bier.png" },    
+      { name: "Alkoholfreies Hefe", price: 5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Hefeglas.png" }, 
+      { name: "Apfelsaftschorle", price: 4, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Cola.png" }, 
+      { name: "Bier 1 Maß", price: 9.5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bier.png" }, 
+      { name: "Bier 0,5l", price: 5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bier.png" },
+      { name: "Cola, Fanta", price: 4.0, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Cola.png" }, 
+      { name: "Flasche Müller-Thurgau", price: 14.0, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Weinflasche.png" }, 
+      { name: "Flasche Silvaner", price: 15.0, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Weinflasche.png" }, 
+      { name: "Gartenlimonade", price: 4.0, category: "getraenke", deposit: 1., image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Cola.png" },     
+      { name: "Jubiläums-Bier", price: 5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bier.png" }, 
+      { name: "Keiler Ruß", price: 5.5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Hefeglas.png" }, 
+      { name: "Radler", price: 5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Bier.png" }, 
+      { name: "Domina", price: 5.5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Weinglas.png" }, 
+      { name: "Müller-Thurgau", price: 5.5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Weinglas.png" }, 
+      { name: "Rotling", price: 5.5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Weinglas.png" }, 
+      { name: "Silvaner", price: 5.5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Weinglas.png" }, 
+      { name: "Spezi 0,5l", price: 4, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Cola.png" }, 
+      { name: "Wasser 0,5l", price: 3.5, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Wasserflasche.png" }, 
+      { name: "Weinschorle", price: 3, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Weinglas.png" }, 
+      { name: "Weißbier", price: 5.5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Hefeglas.png" }, 
+      { name: "Glas-Leer-Bon 2€ 🍷", price: 0.0, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Bestell_Druck_Export/Images/Glas-Bon.png" }, 
+    ];
+
+    let order = [];
+    let paymentButtonClicked = false;
+     
+     
+     function initTabs() {
+  const tabs = document.querySelectorAll('.tab-button');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const tabId = tab.getAttribute('data-tab');
+      activateTab(tabId);
+    });
+  });
+}
+
+function activateTab(tabId) {
+  const tabs = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabs.forEach(tab => tab.classList.remove('active'));
+  tabContents.forEach(content => content.classList.remove('active'));
+  
+  document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+  document.getElementById(tabId).classList.add('active');
+}
+
+ function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  
+  tabcontent = document.getElementsByClassName("tab-content");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  
+  tablinks = document.getElementsByClassName("tab-button");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+    
+     
+     
+    function createButton(product, container) {
+      const buttonWrapper = document.createElement("div");
+      buttonWrapper.className = "button-wrapper";
+
+      const button = document.createElement("div");
+      button.className = `product-button ${product.category}-button`;
+      
+      if (product.image) {
+        const img = document.createElement("img");
+        img.src = product.image;
+        img.alt = product.name;
+        img.style.width = "50px";
+        img.style.height = "50px";
+        button.appendChild(img);
+      }
+      
+      const label = document.createElement("div");
+      label.className = "button-label";
+      label.textContent = product.name;
+      
+      button.addEventListener('click', () => addProductToOrder(product.name));
+
+      buttonWrapper.appendChild(button);
+      buttonWrapper.appendChild(label);
+      container.appendChild(buttonWrapper);
+    }
+
+    function startNewOrder() {
+      order = [];
+      renderOrder();
+
+      document.getElementById("totalSum").textContent = "0.00";
+      document.getElementById("pfandReturnAmount").textContent = "0.00";
+      document.getElementById("amountToPay").textContent = "0.00";
+      document.getElementById("paymentAmount").textContent = "0.00";
+      document.getElementById("changeAmount").textContent = "0.00";
+
+      document.getElementById("bottleQuantity").value = 0;
+      document.getElementById("glassQuantity").value = 0;
+      document.getElementById("jugQuantity").value = 0;
+      document.getElementById("cupQuantity").value = 0;
+      document.getElementById("dishQuantity").value = 0;
+        
+      document.getElementById('summe-spalte5').textContent = '0.00';
+      document.getElementById('summe-spalte6').textContent = '0.00';
+      document.getElementById('summe-spalte7').textContent = '0.00';
+
+      paymentButtonClicked = false;
+    }
+
+    function addProductToOrder(name) {
+      const product = products.find(p => p.name === name);
+      if (product) {
+        const existingProduct = order.find(p => p.name === name);
+        if (existingProduct) {
+          existingProduct.quantity += 1;
+        } else {
+          order.push({ ...product, quantity: 1 });
+        }
+        renderOrder();
+      }
+    }
+
+    const table = document.getElementById('orderTable');
+
+    function berechneSummen() {
+      const zeilen = document.querySelector("#orderTable tbody").getElementsByTagName("tr");
+      let summe5 = 0, summe6 = 0, summe7 = 0;
+
+      for (let i = 0; i < zeilen.length; i++) {
+        const zellen = zeilen[i].getElementsByTagName("td");
+        if (zellen.length >= 7) {
+          summe5 += parseFloat(zellen[4].textContent.replace(",", ".") || "0");
+          summe6 += parseFloat(zellen[5].textContent.replace(",", ".") || "0");
+          summe7 += parseFloat(zellen[6].textContent.replace(",", ".") || "0");
+        }
+      }
+
+      document.getElementById("summe-spalte5").textContent = summe5.toFixed(2);
+      document.getElementById("summe-spalte6").textContent = summe6.toFixed(2);
+      document.getElementById("summe-spalte7").textContent = summe7.toFixed(2);
+    }
+
+
+     
+     
+    function addDecimal(a, b) {
+      return Math.round((a + b) * 100) / 100;
+    }
+
+function renderOrder() {
+    const orderTableBody = document.querySelector("#orderTable tbody");
+    orderTableBody.innerHTML = "";
+
+    let totalSum = 0;
+
+    order.forEach(item => {
+        const totalProductPrice = item.price * item.quantity;
+        const totalProductDeposit = item.deposit * item.quantity;
+        const totalItemPrice = totalProductPrice + totalProductDeposit;
+
+        totalSum += totalItemPrice;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>
+                <button onclick="updateQuantity('${item.name}', 1)">+</button>
+                ${item.quantity}
+                <button onclick="updateQuantity('${item.name}', -1)">-</button>
+            </td>
+            <td>${item.price.toFixed(2)}</td>
+            <td>${item.deposit.toFixed(2)}</td>
+            <td>${totalProductPrice.toFixed(2)}</td>
+            <td>${totalProductDeposit.toFixed(2)}</td>
+            <td>${totalItemPrice.toFixed(2)}</td>
+            <td><button onclick="removeProduct('${item.name}')">X</button></td>
+        `;
+        orderTableBody.appendChild(row);
+    });
+
+    document.getElementById("totalSum").textContent = totalSum.toFixed(2);
+
+    // Neue Berechnung mit Pfandrückgabe durchführen
+    calculatePfandReturn();
+    berechneSummen();
+}
+
+    function updateQuantity(name, change) {
+      const product = order.find(p => p.name === name);
+      if (product) {
+        product.quantity += change;
+        if (product.quantity <= 0) {
+          removeProduct(name);
+        }
+      }
+      renderOrder();
+    }
+
+    function removeProduct(name) {
+      order = order.filter(p => p.name !== name);
+      renderOrder();
+    }
+
+    function openPfandModal() {
+      document.getElementById("pfandModal").style.display = "flex";
+    }
+
+function closePfandModal() {
+    document.getElementById("pfandModal").style.display = "none";
+}
+
+    function updatePfandQuantity(type, change) {
+      let quantityInput = document.getElementById(`${type}Quantity`);
+      let newQuantity = parseInt(quantityInput.value) + change;
+      if (newQuantity >= 0) {
+        quantityInput.value = newQuantity;
+      }
+    }
+
+function calculatePfandReturn() {
+    let pfandReturnAmount = 0;
+    pfandReturnAmount += parseInt(document.getElementById("bottleQuantity").value) * 1;
+    pfandReturnAmount += parseInt(document.getElementById("glassQuantity").value) * 2;
+    pfandReturnAmount += parseInt(document.getElementById("jugQuantity").value) * 5;
+    pfandReturnAmount += parseInt(document.getElementById("cupQuantity").value) * 2;
+    pfandReturnAmount += parseInt(document.getElementById("dishQuantity").value) * 5;
+
+    // Speichert den Pfandbetrag und stellt sicher, dass es eine gültige Zahl ist
+    document.getElementById("pfandReturnAmount").textContent = pfandReturnAmount.toFixed(2);
+
+    // Stellt sicher, dass `totalSum` eine Zahl ist (falls noch keine Bestellung existiert)
+    let totalAmountToPay = parseFloat(document.getElementById("totalSum").textContent) || 0;
+
+    // Berechnung des neuen zu zahlenden Betrags
+    let updatedAmountToPay = totalAmountToPay - pfandReturnAmount;
+    document.getElementById("amountToPay").textContent = updatedAmountToPay.toFixed(2);
+
+    // Nach der Berechnung Modal schließen
+    closePfandModal();
+}
+
+    function handlePayment() {
+      paymentButtonClicked = true;
+      const amountToPay = parseFloat(document.getElementById("amountToPay").textContent);
+      const paymentDialog = document.createElement("div");
+      paymentDialog.className = "payment-dialog";
+      paymentDialog.innerHTML = `
+        <div class="payment-header">
+          <h2>Zahlungseingabe</h2>
+          <div class="payment-display">
+            <div>Zu zahlen: <strong>${amountToPay.toFixed(2)} €</strong></div>
+            <div>Erhalten: <strong id="enteredAmount">0,00 €</strong></div>
+            <div>Rückgeld: <strong id="changeAmount">0,00 €</strong></div>
+          </div>
+        </div>
+        <div class="numpad-grid">
+          <button class="numpad-btn" data-value="7">7</button>
+          <button class="numpad-btn" data-value="8">8</button>
+          <button class="numpad-btn" data-value="9">9</button>
+          <button class="numpad-btn" data-value="4">4</button>
+          <button class="numpad-btn" data-value="5">5</button>
+          <button class="numpad-btn" data-value="6">6</button>
+          <button class="numpad-btn" data-value="1">1</button>
+          <button class="numpad-btn" data-value="2">2</button>
+          <button class="numpad-btn" data-value="3">3</button>
+          <button class="numpad-btn" data-value="0">0</button>
+          <button class="numpad-btn" data-value=".">.</button>
+          <button class="numpad-btn" data-value="C">C</button>
+        </div>
+        <div class="payment-controls">
+          <button class="cancel-btn">Abbrechen</button>
+          <button class="confirm-btn">OK</button>
+        </div>
+      `;
+
+      let enteredValue = "";
+
+      paymentDialog.querySelectorAll('.numpad-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const value = btn.dataset.value;
+        
+             if (value === 'C') {
+            enteredValue = "";
+          } else if (value === '.' && !enteredValue.includes('.')) {
+            enteredValue += value;
+          } else if (value !== '.') {
+            enteredValue += value;
+          }
+          updateDisplay();
+        });
+      });
+
+      function updateDisplay() {
+        const displayAmount = parseFloat(enteredValue) || 0;
+        paymentDialog.querySelector('#enteredAmount').textContent = displayAmount.toFixed(2) + ' €';
+        
+        const change = displayAmount - amountToPay;
+        paymentDialog.querySelector('#changeAmount').textContent = (change > 0 ? change.toFixed(2) : '0,00') + ' €';
+        
+        const confirmBtn = paymentDialog.querySelector('.confirm-btn');
+        confirmBtn.disabled = displayAmount < amountToPay;
+        confirmBtn.style.opacity = displayAmount < amountToPay ? '0.5' : '1';
+      }
+
+      paymentDialog.querySelector('.confirm-btn').addEventListener('click', () => {
+        const paymentAmount = parseFloat(enteredValue);
+        if (!isNaN(paymentAmount) && paymentAmount >= amountToPay) {
+
+                    const change = paymentAmount - amountToPay;
+          document.getElementById("paymentAmount").textContent = paymentAmount.toFixed(2);
+          document.getElementById("changeAmount").textContent = change.toFixed(2);
+          document.body.removeChild(paymentDialog);
+        } else {
+          alert(`Bitte geben Sie einen gültigen Betrag ein. Mindestbetrag: ${amountToPay.toFixed(2)} €`);
+        }
+      });
+
+      paymentDialog.querySelector('.cancel-btn').addEventListener('click', () => {
+        document.body.removeChild(paymentDialog);
+        paymentButtonClicked = false;
+      });
+
+      document.body.appendChild(paymentDialog);
+      updateDisplay();
+    }
+
+    function completeOrder() {
+      if (!paymentButtonClicked) {
+         alert("Hi, wurde denn schon gezahlt,\nda Du die Bestellung abschließen willst?");
+        return;
+      }
+
+      const totalSum = parseFloat(document.getElementById("totalSum").textContent);
+      const pfandReturnAmount = parseFloat(document.getElementById("pfandReturnAmount").textContent);
+      const amountToPay = parseFloat(document.getElementById("amountToPay").textContent);
+      const paymentAmount = parseFloat(document.getElementById("paymentAmount").textContent);
+      const changeAmount = parseFloat(document.getElementById("changeAmount").textContent);
+
+      const orderData = {
+        date: new Date().toISOString(),
+        order: order,
+        totalSum: totalSum,
+        pfandReturnAmount: pfandReturnAmount,
+        amountToPay: amountToPay,
+        paymentAmount: paymentAmount,
+        changeAmount: changeAmount
+      };
+
+      let orders = JSON.parse(localStorage.getItem('allOrders') || '[]');
+      orders.push(orderData);
+      localStorage.setItem('allOrders', JSON.stringify(orders));
+
+      alert("Bestellung abgeschlossen und gespeichert!");
+      startNewOrder();
+      
+      exportAllOrdersToCSV();
+    }
+
+    function exportAllOrdersToCSV() {
+      let orders = JSON.parse(localStorage.getItem('allOrders') || '[]');
+      
+      if (orders.length === 0) {
+        alert("Keine Bestellungen zum Exportieren vorhanden.");
+        return;
+      }
+
+      let csvContent = '\uFEFF';
+      csvContent += "Datum;Produkt;Menge;Einzelpreis;Pfand;Gesamtpreis;Gesamtsumme;Pfandrückgabe;Zu zahlender Betrag;Gezahlter Betrag;Rückgeld\n";
+
+      orders.forEach(orderData => {
+        const date = new Date(orderData.date).toLocaleString();
+        orderData.order.forEach((item, index) => {
+          const row = [
+            `"${date}"`,
+            `"${item.name}"`,
+            item.quantity,
+            item.price.toFixed(2).replace('.', ','),
+            item.deposit.toFixed(2).replace('.', ','),
+            (item.quantity * (item.price + item.deposit)).toFixed(2).replace('.', ',')
+          ];
+          
+          if (index === 0) {
+            row.push(
+              orderData.totalSum.toFixed(2).replace('.', ','),
+              orderData.pfandReturnAmount.toFixed(2).replace('.', ','),
+              orderData.amountToPay.toFixed(2).replace('.', ','),
+              orderData.paymentAmount.toFixed(2).replace('.', ','),
+              orderData.changeAmount.toFixed(2).replace('.', ',')
+            );
+          }
+          
+          csvContent += row.join(";") + "\n";
+        });
+      });
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      if (link.download !== undefined) {
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", "Verkaeufe.csv");
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
+
+    function clearAllOrders() {
+      if (confirm("Vorsicht ! Möchtest Du wirklich alle gespeicherten Bestellungen löschen?")) {
+        localStorage.removeItem('allOrders');
+        alert("Alle gespeicherten Bestellungen wurden gelöscht.");
+        startNewOrder();
+      }
+    }
+
+ document.addEventListener('DOMContentLoaded', function() {
+  var getraenkeTab = document.querySelector('[data-tab="getraenke"]');
+  var essenTab = document.querySelector('[data-tab="essen"]');
+  
+  getraenkeTab.addEventListener('click', function(event) {
+    openTab(event, 'getraenke');
+  });
+  
+  essenTab.addEventListener('click', function(event) {
+    openTab(event, 'essen');
+  });
+});
+
+     
+  
+     
+     
+     
+     document.addEventListener('DOMContentLoaded', () => {
+  const getraenkeContainer = document.querySelector('#getraenke .product-buttons-container');
+  const essenContainer = document.querySelector('#essen .product-buttons-container');
+  
+  products.forEach(product => {
+    if (product.category === 'getraenke') {
+      createButton(product, getraenkeContainer);
+    } else if (product.category === 'essen') {
+      createButton(product, essenContainer);
+    }
+  });
+});
+
+</script>
+
+    
+  <footer style="position: fixed; bottom: 0; width: 100%; text-align: center; color: #C1351D; padding: 8px; font-size: 12px; background-color: white; z-index: 1000;">
+    copyright @ M1Wundi
+  </footer>
+</body>
+</html>
