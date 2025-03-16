@@ -135,9 +135,7 @@ padding-bottom: 100px; /* Erhöhen Sie diesen Wert bei Bedarf */
 }
 
 
-    
-      
-      
+            
     .order-area {
       flex: 1;
         overflow-x: hidden;
@@ -151,15 +149,15 @@ padding-bottom: 100px; /* Erhöhen Sie diesen Wert bei Bedarf */
 }
 
   .order-area table {
-  font-size: 0.9rem; /* Reduziert die Schriftgröße für die gesamte Tabelle */
+  font-size: 0.7rem; /* Reduziert die Schriftgröße für die gesamte Tabelle */
 }
 
 .order-area th {
-  font-size: 0.95rem; /* Leicht größere Schrift für Überschriften */
+  font-size: 0.75rem; /* Leicht größere Schrift für Überschriften */
 }
 
 .order-area td {
-  font-size: 0.85rem; /* Noch kleinere Schrift für Tabelleneinträge */
+  font-size: 0.65rem; /* Noch kleinere Schrift für Tabelleneinträge */
 }
     
       
@@ -701,6 +699,7 @@ input[type="number"] {
 <body>
   <div class="header">
   
+      
 
       
    <h1>45 Jahre Jugendblasorchester Kürnach</h1>
@@ -767,7 +766,11 @@ input[type="number"] {
       | Zahlung: <span id="paymentAmount">0.00</span>€
       | Rückgeld: <span id="changeAmount">0.00</span>€
     </h3>
-      
+
+         
+
+
+         
          
     <div class="button-container">
       <button id="newCustomerBtn" onclick="startNewOrder()">Neuer Kunde</button>
@@ -1027,6 +1030,8 @@ function activateTab(tabId) {
       document.getElementById("summe-spalte7").textContent = summe7.toFixed(2);
     }
 
+
+     
      
     function addDecimal(a, b) {
       return Math.round((a + b) * 100) / 100;
@@ -1312,7 +1317,10 @@ function calculatePfandReturn() {
   });
 });
 
-
+     
+  
+     
+     
      
      document.addEventListener('DOMContentLoaded', () => {
   const getraenkeContainer = document.querySelector('#getraenke .product-buttons-container');
