@@ -17,7 +17,7 @@
       touch-action: manipulation;
       display: flex;
       flex-direction: column;
-      height: 100vh;
+      height: 100%;
     }
             
     .footer-message i {
@@ -94,27 +94,35 @@ h1 {
         display: none;
       }
     }
- 
-  .main-container {
-padding-bottom: 100px; /* Erhöhen Sie diesen Wert bei Bedarf */
-      display: flex;
-      flex: 1;
-    }
 
       
-      .product-area, .order-area {
-  flex-grow: 1;
-  flex-basis: 80%;
+      
+      
+      
+          
+      
+.main-container {
+  display: flex;
+  height: calc(100vh - [Header-Höhe] - [Footer-Höhe]);
+  overflow: hidden;
+}
+      
+.product-area, .order-area {
+  flex: 1 1 10%;
+  overflow-y: auto;
+ 
+  height: 100%; /* Stellt sicher, dass beide die volle Höhe des Containers einnehmen */
 }
 
-      
-      
-          .product-area {
-order: 2;
-              flex: 1;
-      overflow-y: auto;
-      padding: 0px;
-    }
+.product-area {
+  order: 2;
+}
+
+.order-area {
+  order: 1;
+}
+
+
 
     .product-area .tabs {
   display: flex;
@@ -288,7 +296,7 @@ input[type=number] {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 10px;
-  justify-content: center;
+ 
   padding: 10px;
 }
 
