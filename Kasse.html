@@ -19,7 +19,7 @@
       flex-direction: column;
       height: 100%;
     }
-             
+            
     .footer-message i {
       position: left;
       margin-right: 5px;
@@ -863,17 +863,18 @@ input[type="number"] {
     
     
     
-    <script>
-        if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-      console.log('ServiceWorker registration failed: ', err);
-    });
-  });
-}
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/Festle/service-worker.js').then(function(registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
 </script>
+
         
     
     
