@@ -6,7 +6,8 @@ const urlsToCache = [
   '/Festle/Images/Glas.png',
   '/Festle/Images/Krug.png',
   '/Festle/Images/Tasse.png',
-  '/Festle/Images/Teller.png'
+  '/Festle/Images/Teller.png',
+  '/Festle/offline.html'  // Neue Zeile für die Offline-Seite
   // Fügen Sie hier alle anderen benötigten Ressourcen hinzu
 ];
 
@@ -31,7 +32,7 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-self.addEventListener('fetch', (event) => {
+sself.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
@@ -52,8 +53,8 @@ self.addEventListener('fetch', (event) => {
             return networkResponse;
           })
           .catch(() => {
-            // Wenn Netzwerkanfrage fehlschlägt, versuche nochmal aus dem Cache zu laden
-            return caches.match(event.request);
+            // Wenn Netzwerkanfrage fehlschlägt, zeige die Offline-Seite an
+            return caches.match('/Festle/offline.html');
           });
       })
   );
