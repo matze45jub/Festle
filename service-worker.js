@@ -1,7 +1,7 @@
 const CACHE_NAME = 'kasse-v1';
 const urlsToCache = [
-  '/Festle/Kasse.html',
-  '/Festle/Images/Bier.png',
+  '/Kasse.html',
+  '/Images/Bier.png',
   '/Festle/Images/Flasche.png',
   '/Festle/Images/Glas.png',
   '/Festle/Images/Krug.png',
@@ -9,14 +9,14 @@ const urlsToCache = [
   '/Festle/Images/Teller.png'
 ];
 
-self.addEventListener('install', function(event) {
+self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(function(cache) {
-        return cache.addAll(urlsToCache);
-      })
+      .then((cache) => cache.addAll(urlsToCache))
   );
 });
+
+
 
 self.addEventListener('activate', function(event) {
   event.waitUntil(
@@ -32,17 +32,18 @@ self.addEventListener('activate', function(event) {
   );
 });
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
-      .then(function(response) {
+      .then((response) => {
         if (response) {
           return response;
         }
-        return fetch(event.request);
+        return fetch(event.request).catch(() => caches.match('/offline.html'));
       })
   );
 });
+
 
 
 
