@@ -32,18 +32,15 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-sself.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
         if (response) {
-          return response; // Wenn im Cache gefunden, liefere es
+          return response;
         }
-        
-        // Versuche, die Ressource vom Netzwerk zu holen
         return fetch(event.request)
           .then((networkResponse) => {
-            // Wenn erfolgreich geholt, cache die Ressource für zukünftige Nutzung
             if (networkResponse && networkResponse.status === 200) {
               const cacheResponse = networkResponse.clone();
               caches.open(CACHE_NAME).then((cache) => {
@@ -53,9 +50,9 @@ sself.addEventListener('fetch', (event) => {
             return networkResponse;
           })
           .catch(() => {
-            // Wenn Netzwerkanfrage fehlschlägt, zeige die Offline-Seite an
             return caches.match('/Festle/offline.html');
           });
       })
   );
 });
+
