@@ -7,6 +7,7 @@ const urlsToCache = [
   '/Festle/Images/Krug.png',
   '/Festle/Images/Tasse.png',
   '/Festle/Images/Teller.png'
+  // Fügen Sie hier alle anderen benötigten Ressourcen hinzu
 ];
 
 self.addEventListener('install', (event) => {
@@ -16,15 +17,13 @@ self.addEventListener('install', (event) => {
   );
 });
 
-
-
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(function(cacheNames) {
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.filter(function(cacheName) {
+        cacheNames.filter((cacheName) => {
           return cacheName !== CACHE_NAME;
-        }).map(function(cacheName) {
+        }).map((cacheName) => {
           return caches.delete(cacheName);
         })
       );
@@ -32,19 +31,30 @@ self.addEventListener('activate', function(event) {
   );
 });
 
-
-
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
         if (response) {
-          return response;
+          return response; // Wenn im Cache gefunden, liefere es
         }
-        return fetch(event.request).catch(() => {
-          return caches.match('/Festle/offline.html');
-        });
+        
+        // Versuche, die Ressource vom Netzwerk zu holen
+        return fetch(event.request)
+          .then((networkResponse) => {
+            // Wenn erfolgreich geholt, cache die Ressource für zukünftige Nutzung
+            if (networkResponse && networkResponse.status === 200) {
+              const cacheResponse = networkResponse.clone();
+              caches.open(CACHE_NAME).then((cache) => {
+                cache.put(event.request, cacheResponse);
+              });
+            }
+            return networkResponse;
+          })
+          .catch(() => {
+            // Wenn Netzwerkanfrage fehlschlägt, versuche nochmal aus dem Cache zu laden
+            return caches.match(event.request);
+          });
       })
   );
 });
-
