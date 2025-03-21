@@ -1,7 +1,7 @@
 const CACHE_NAME = 'kasse-v1';
 const urlsToCache = [
-  '/Kasse.html',
-  '/Images/Bier.png',
+  '/Festle/Kasse.html',
+  '/Festle/Images/45Jahre.png',
   '/Festle/Images/Flasche.png',
   '/Festle/Images/Glas.png',
   '/Festle/Images/Krug.png',
@@ -32,6 +32,8 @@ self.addEventListener('activate', function(event) {
   );
 });
 
+
+
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
@@ -39,11 +41,10 @@ self.addEventListener('fetch', (event) => {
         if (response) {
           return response;
         }
-        return fetch(event.request).catch(() => caches.match('/offline.html'));
+        return fetch(event.request).catch(() => {
+          return caches.match('/Festle/offline.html');
+        });
       })
   );
 });
-
-
-
 
