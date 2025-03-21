@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>🎊 JBO feiert mit Freunden ♥️ </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/manifest.json">
 
-  
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -872,6 +872,11 @@ input[type="number"] {
     
 
  <script>
+     
+     if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/Festle/service-worker.js');
+  }
+     
     const products = [
       { name: "Bagel mit veganer Creme", price: 5.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bagel.png" },
       { name: "Bandnudeln mit Tomaten-Gemüseragout", price: 14, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Gemuesenudeln.png" },
