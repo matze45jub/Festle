@@ -1,17 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Festle Kasse</title>
-  <link rel="manifest" href="manifest.json">
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
-  </script>
-</head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>🎊 JBO feiert mit Freunden ♥️ </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <style>
     body {
@@ -158,7 +151,24 @@ h1 {
   color: white;
 }
 
-
+    
+    .tab-button[data-tab="zusatz_do"] {
+  background-color: #e9cdbf;
+  color: white;
+}
+    .tab-button[data-tab="zusatz_fr"] {
+  background-color: #d3f1c6;
+  color: white;
+}
+        .tab-button[data-tab="zusatz_sa"] {
+  background-color: #c6c014;
+  color: white;
+}
+    .tab-button[data-tab="zusatz_so"] {
+  background-color: #edc1eb;
+  color: white;
+}
+    
             
     .order-area {
 order: 1;
@@ -286,6 +296,27 @@ input[type=number] {
   background-color: #fff;
   border-bottom: 3px solid #E74C3C;
 }
+    
+    
+    .tab-button.active[data-tab="zusatz_do"] {
+  background-color: #fff;
+  border-bottom: 3px solid #edc1eb;
+}
+    
+        .tab-button.active[data-tab="zusatz_fr"] {
+  background-color: #fff;
+  border-bottom: 3px solid #d3f1c6;
+}
+    .tab-button.active[data-tab="zusatz_sa"] {
+  background-color: #fff;
+  border-bottom: 3px solid #d5ce19;
+}
+    
+        .tab-button.active[data-tab="zusatz_so"] {
+  background-color: #fff;
+  border-bottom: 3px solid #edc1eb;
+}
+    
 
 .tab-content {
   display: none;
@@ -358,14 +389,26 @@ input[type=number] {
   word-wrap: break-word;
 }
 
-.essen-button {
-  background-color: #E74C3C;
-}
+
 
 .getraenke-button {
   background-color: #377EBF;
 }
-
+.essen-button {
+  background-color: #E74C3C;
+}
+    .zusatz_do-button {
+  background-color: #edc1eb;
+} 
+    .zusatz_fr-button {
+  background-color: #d3f1c6;
+}
+        .zusatz_sa-button {
+  background-color: #d5ce19;
+} 
+    .zusatz_so-button {
+  background-color: #edc1eb;
+}
 
       
    body:before {
@@ -411,6 +454,39 @@ input[type=number] {
       background-color: #1F4D77;
     }
 
+       .zusatz_do-button {
+      background-color: #edc1eb;
+      color: #FFFFFF;
+    }
+    .zusatz_do-button:hover {
+      background-color: #b79f93;
+    }
+
+        .zusatz_fr-button {
+      background-color: #8db17d;
+      color: #FFFFFF;
+    }
+    .zusatz_fr-button:hover {
+      background-color: #d3f1c6;
+    }
+         .zusatz_sa-button {
+      background-color: #d5ce19;
+      color: #FFFFFF;
+    }
+    .zusatz_sa-button:hover {
+      background-color: #979212;
+    }
+
+        .zusatz_so-button {
+      background-color: #edc1eb;
+      color: #FFFFFF;
+    }
+    .zusatz_so-button:hover {
+      background-color: #ad78ab;
+    }
+    
+    
+    
     #orderTable, #orderTable th, #orderTable td {
       border: 1px solid #ccc;
       border-collapse: collapse;
@@ -736,6 +812,10 @@ input[type="number"] {
     <div class="tabs">
       <button class="tab-button active" data-tab="getraenke">Getränke</button>
       <button class="tab-button" data-tab="essen">Essen</button>
+       <button class="tab-button" data-tab="zusatz_do">Zusatz_DO</button>
+       <button class="tab-button" data-tab="zusatz_fr">Zusatz_FR</button>
+       <button class="tab-button" data-tab="zusatz_sa">Zusatz_SA</button>
+       <button class="tab-button" data-tab="zusatz_so">Zusatz_SO</button>
     </div>
     <div id="getraenke" class="tab-content active">
       <div class="product-buttons-container">
@@ -745,6 +825,26 @@ input[type="number"] {
     <div id="essen" class="tab-content">
       <div class="product-buttons-container">
         <!-- Essen-Buttons hier einfügen -->
+      </div>
+    </div>
+        <div id="zusatz_do" class="tab-content">
+      <div class="product-buttons-container">
+        <!-- Zusatz_Do-Buttons hier einfügen -->
+      </div>
+    </div>
+        <div id="zusatz_fr" class="tab-content">
+      <div class="product-buttons-container">
+        <!-- Zusatz_FR-Buttons hier einfügen -->
+      </div>
+    </div>
+            <div id="zusatz_sa" class="tab-content">
+      <div class="product-buttons-container">
+        <!-- Zusatz_SA-Buttons hier einfügen -->
+      </div>
+    </div>
+        <div id="zusatz_so" class="tab-content">
+      <div class="product-buttons-container">
+        <!-- Zusatz_SO-Buttons hier einfügen -->
       </div>
     </div>
   </div>
@@ -866,80 +966,101 @@ input[type="number"] {
     </div>
   </div>
 </div>
-    
-    
-    
-    
-
-
-        
-    
-    
 
  <script>
-     
-     if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/Festle/service-worker.js');
-  }
-     
     const products = [
-      { name: "Bagel mit veganer Creme", price: 5.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bagel.png" },
-      { name: "Bandnudeln mit Tomaten-Gemüseragout", price: 14, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Gemuesenudeln.png" },
-      { name: "Bratwurst mit Brötchen", price: 3.2, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Bratwurst.png" },
-      { name: "Bratwurst mit Pommes", price: 5.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bratwurst_Pommes.png" },
-      { name: "Bratwürste mit Kartoffelsalat", price: 8.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bratwurst_Kartoffelsalat.png" },
-      { name: "Camembert geback.", price: 9, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Camembert.png" }, 
-      { name: "Ciabatta Caprese", price: 3.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Ciabatta_Caprese.png" },
-      { name: "Currywurst mit Brötchen", price: 4.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Curry_Broetchen.png" },
-      { name: "Currywurst mit Pommes", price: 6.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Curry_Pommes.png" },
-      { name: "Fischbrötchen", price: 3, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Fischbroetchen.png" },
-      { name: "Forelle mit Brötchen", price: 13, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Forelle_Broetchen.png" }, 
-      { name: "Forelle mit Kartoffelsalat", price: 15, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Forelle_Kartoffel.png" }, 
-      { name: "Hähnchen (½) mit Brötchen", price: 8, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Haehnchen_Broetchen.png" }, 
-      { name: "Hähnchen (½) mit Pommes", price: 10, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Haehnchen_Pommes.png" }, 
-      { name: "Hamburger", price: 9, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Hamburger.png" }, 
-      { name: "Hamburger und Pommes", price: 11, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Veggie_Pommes.png" }, 
-      { name: "Hochzeitsessen", price: 7.2, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Hochzeitsessen.png" }, 
-      { name: "Kartoffelpuffer", price: 7, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Kartoffelpuffer.png" }, 
-      { name: "Linsenbolognese mit Nudeln", price: 9, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Penne mit Linsen.png" }, 
-       { name: "Mettstange", price: 3.5, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Mettstange.png" }, 
-      { name: "Ochs vom Spieß", price: 14.5, category: "essen", deposit: 5.0, image: "https://matze45jub.github.io/Festle/Images/Ochs vom Spieß.png" }, 
-      { name: "Obatzter mit Brot", price: 4, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Obatzter.png" }, 
-      { name: "Pommes", price: 2.5, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Pommes.png" }, 
-      { name: "Rettichbrot", price: 4, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Rettichbrot.png" },
-      { name: "Spinat-/Semmelknödel", price: 6, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Knoedel.png" },  
-      { name: "Steak mit Brot", price: 4.5, category: "essen", deposit: 5.0, image: "https://matze45jub.github.io/Festle/Images/Steak_Brot.png" },
-       { name: "Steak mit Kartoffelsalat", price: 6.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Steak_Kartoffel.png" },
-       { name: "Steak mit Pommes", price: 6.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Steak_Pommes.png" },
-      { name: "VeggieBurger", price: 8, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Veggieburger.png" }, 
-      { name: "VeggieBurger mit Pommes", price: 10, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Veggie_Pommes.png" },
-       { name: "Weißwürste mit Brezel", price: 7.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Weißwurst.png" },
-       { name: "Wraps", price: 5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Wraps.png" },    
-    { name: "Geschirr-Leer-Bon 5€", price: 0.0, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Geschirr-Bon.png" }, 
-
-
       
-      { name: "Alkoholfreies Bier", price: 5, category: "getraenke", deposit: 5., image: "https://matze45jub.github.io/Festle/Images/Bier.png" },    
-      { name: "Alkoholfreies Hefe", price: 5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Hefeglas.png" }, 
-      { name: "Apfelsaftschorle", price: 4, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Cola.png" }, 
-      { name: "Bier 1 Maß", price: 9.5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bier.png" }, 
-      { name: "Bier 0,5l", price: 5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bier.png" },
-      { name: "Cola", price: 4.0, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Cola.png" }, 
-      { name: "Fanta", price: 4.0, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Cola.png" }, 
-      { name: "Flasche Müller-Thurgau", price: 14.0, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Weinflasche.png" }, 
-      { name: "Flasche Silvaner", price: 15.0, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Weinflasche.png" }, 
-      { name: "Gartenlimonade", price: 4.0, category: "getraenke", deposit: 1., image: "https://matze45jub.github.io/Festle/Images/Cola.png" },     
-      { name: "Jubiläums-Bier", price: 5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bier.png" }, 
-      { name: "Keiler Ruß", price: 5.5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Hefeglas.png" }, 
-      { name: "Radler", price: 5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bier.png" }, 
-      { name: "Domina", price: 5.5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinglas.png" }, 
-      { name: "Müller-Thurgau", price: 5.5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinglas.png" }, 
-      { name: "Rotling", price: 5.5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinglas.png" }, 
-      { name: "Silvaner", price: 5.5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinglas.png" }, 
-      { name: "Spezi 0,5l", price: 4, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Cola.png" }, 
-      { name: "Wasser 0,5l", price: 3.5, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Wasserflasche.png" }, 
-      { name: "Weinschorle", price: 3, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinglas.png" }, 
-      { name: "Weißbier", price: 5.5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Hefeglas.png" }, 
+      { name: "1 Paar Weißwürste mit Brezel", price: 6, category: "zusatz_do", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Weißwurst.png" },
+      { name: "Ochs vom Spieß", price: 14.5, category: "zusatz_do", deposit: 5.0, image: "https://matze45jub.github.io/Festle/Images/Ochs vom Spieß.png" }, 
+      { name: "Penne mit Linsenbolognese", price: 7, category: "zusatz_do", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Penne mit Linsen.png" }, 
+      { name: "(½) Hähnchen mit Brötchen", price: 8, category: "zusatz_do", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Haehnchen_Broetchen.png" }, 
+      { name: "(½) Hähnchen mit Pommes", price: 10, category: "zusatz_do", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Haehnchen_Pommes.png" }, 
+      { name: "gebackene Camemberts mit Baguette und Salatbukett", price: 7, category: "zusatz_do", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Camembert.png" }, 
+      
+      { name: "gegrillte Bachforelle mit Brötchen", price: 13, category: "zusatz_fr", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Forelle_Broetchen.png" }, 
+      { name: "gegrillte Bachforelle mit Kartoffelsalat", price: 15, category: "zusatz_fr", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Forelle_Kartoffel.png" }, 
+      { name: "Cheeseburger (110g)", price: 8, category: "zusatz_fr", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Hamburger.png" }, 
+      { name: "Cheeseburger (110g) und Pommes", price: 10, category: "zusatz_fr", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Veggie_Pommes.png" },
+      { name: "VeggieBurger", price: 7, category: "zusatz_fr", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Veggieburger.png" }, 
+      { name: "VeggieBurger mit Pommes", price: 9, category: "zusatz_fr", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Veggie_Pommes.png" },
+     
+      { name: "gegrillte Bachforelle mit Brötchen", price: 13, category: "zusatz_sa", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Forelle_Broetchen.png" }, 
+      { name: "gegrillte Bachforelle mit Kartoffelsalat", price: 15, category: "zusatz_sa", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Forelle_Kartoffel.png" }, 
+      { name: "Cheeseburger (110g)", price: 8, category: "zusatz_sa", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Hamburger.png" }, 
+      { name: "Cheeseburger (110g) und Pommes", price: 10, category: "zusatz_sa", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Veggie_Pommes.png" },
+      { name: "VeggieBurger", price: 7, category: "zusatz_sa", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Veggieburger.png" }, 
+      { name: "VeggieBurger mit Pommes", price: 9, category: "zusatz_sa", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Veggie_Pommes.png" },
+      { name: "Zweierlei Knödel (Semmel u. Spinat) mit Champignonsoße", price: 6, category: "zusatz_sa", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Knoedel.png" }, 
+      
+      
+      { name: "Fränkisches Hochzeitsessen", price: 15, category: "zusatz_so", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Hochzeitsessen.png" }, 
+      { name: "Bandnudeln mit Tomaten-Gemüseragout", price: 11, category: "zusatz_so", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Gemuesenudeln.png" },
+      { name: "Kartoffelpuffer hoch3 (süß) mit Apfelmus", price: 6, category: "zusatz_so", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Kartoffelpuffer.png" },  
+      { name: "Kartoffelpuffer hoch3 mit Kräuterdip", price: 6, category: "zusatz_so", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Kartoffelpuffer.png" },  
+      { name: "Kartoffelpuffer hoch3 mit Räucherlachs u. Kräuterdip", price: 7, category: "zusatz_so", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Kartoffelpuffer.png" },
+      { name: "(½) Hähnchen mit Brötchen", price: 8, category: "zusatz_so", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Haehnchen_Broetchen.png" }, 
+      { name: "(½) Hähnchen mit Pommes", price: 10, category: "zusatz_so", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Haehnchen_Pommes.png" }, 
+      
+      
+      { name: "Gezwickte im Brötchen", price: 3.5, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Bratwurst.png" },
+      { name: "Bratwurst mit Pommes", price: 5.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bratwurst_Pommes.png" },
+      { name: "1 Paar Bratwürste mit Kartoffelsalat", price: 9, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bratwurst_Kartoffelsalat.png" },
+      { name: "Currywurst mit Brötchen", price: 5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Curry_Broetchen.png" },
+      { name: "Currywurst mit Pommes o. Kartoffelsalat", price: 7, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Curry_Pommes.png" },
+      { name: "Steak mit Brot", price: 4.5, category: "essen", deposit: 5.0, image: "https://matze45jub.github.io/Festle/Images/Steak_Brot.png" },
+      { name: "Steak mit Pommes", price: 6.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Steak_Pommes.png" },
+      { name: "Steak mit Kartoffelsalat", price: 6.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Steak_Kartoffel.png" },
+      { name: "Tüte Pommes", price: 3, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Pommes.png" }, 
+      { name: "Fischbrötchen Bismarckhering", price: 3.5, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Fischbroetchen.png" },
+      { name: "Mettstange", price: 3, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Mettstange.png" }, 
+      { name: "Portion Obatzter mit Brot", price: 4, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Obatzter.png" }, 
+      { name: "Ciabatta Caprese mit Tomaten, Mozarella", price: 3.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Ciabatta_Caprese.png" },
+      { name: "Portion Rettich mit Brot u. Butter", price: 4, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Rettichbrot.png" },
+      { name: "Wrap mit Schinken, Käse, Tomaten", price: 3, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Wraps.png" },  
+      { name: "Wrap mit Tomate, Parmesan u, Rucola", price: 3, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Wraps.png" },   
+      { name: "Bagel mit veganer Creme u. Rucola", price: 3, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bagel.png" },
+     
+      { name: "Geschirr-Leer-Bon 5€", price: 0.0, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Geschirr-Bon.png" }, 
+
+      { name: "Körnier Festbier 1 Maß", price: 9.5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bier.png" }, 
+      { name: "Körnier Festbier 0,5l", price: 5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bier.png" }, 
+      { name: "Radler 0,5l", price: 5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bier.png" }, 
+      { name: "Keiler Weißbier 0,5l", price: 5.5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Hefeglas.png" }, 
+      { name: "Keiler Ruß 0,5l", price: 5.5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Hefeglas.png" }, 
+      { name: "Alkoholfreies Weißbier 0,5l", price: 5.5, category: "getraenke", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Hefeglas.png" }, 
+      { name: "Alkoholfreies Bier 0,5l", price: 5, category: "getraenke", deposit: 5., image: "https://matze45jub.github.io/Festle/Images/Bier.png" },
+      
+      { name: "Silvaner 0,25l", price: 5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinglas.png" },
+      { name: "Flasche Silvaner 1l", price: 16, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Weinflasche.png" }, 
+      
+      { name: "Bacchus 0,25l", price: 5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinglas.png" },
+      { name: "Flasche Bacchus 1l", price: 16, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Weinflasche.png" },
+      
+      { name: "Grauburgunder 0,25l", price: 5.5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinglas.png" },
+      { name: "Flasche Grauburgunder 0,75l", price: 14, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Weinflasche.png" },
+      
+      { name: "Müller-Thurgau 0,25l", price: 5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinglas.png" },
+      { name: "Flasche Müller-Thurgau 1l", price: 16, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Weinflasche.png" },
+      
+      { name: "Rotling 0,25l", price: 5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinglas.png" },
+      { name: "Flasche Rotling 1l", price: 16, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Weinflasche.png" },
+      
+      { name: "Vagabund, Rotwein Cuvee 0,25l", price: 5.5, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinglas.png" },
+      { name: "Flasche Vagabund, Rotwein Cuvee 1l", price: 18, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Weinflasche.png" },
+      
+      { name: "Weinschorle 0,25l", price: 3, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinglas.png" },
+      { name: "Weinschorle 0,5l", price: 6, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Weinflasche.png" },
+       
+      { name: "Bad Brückenauer (spritzig) 0,5l", price: 3, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Wasserflasche.png" }, 
+      { name: "Bad Brückenauer (medium) 0,5l", price: 3, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Wasserflasche.png" }, 
+      { name: "Bad Brückenauer (still) 0,5l", price: 3, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Wasserflasche.png" }, 
+      { name: "Bad Brückenauer Spezi 0,5l", price: 3.5, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Cola.png" }, 
+      { name: "Bad Brückenauer Apfelsaftschorle", price: 3.5, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Cola.png" }, 
+      { name: "Gartenlimonade schwarze Johannisbeere 0,5l", price: 3.5, category: "getraenke", deposit: 1., image: "https://matze45jub.github.io/Festle/Images/Cola.png" },  
+      { name: "Gartenlimonade Zitrone 0,5l", price: 3.5, category: "getraenke", deposit: 1., image: "https://matze45jub.github.io/Festle/Images/Cola.png" },  
+      { name: "Cola 0,33l", price: 3.5, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Cola.png" }, 
+      { name: "Fanta 0,33l", price: 3.5, category: "getraenke", deposit: 1, image: "https://matze45jub.github.io/Festle/Images/Cola.png" }, 
+    
       { name: "Glas-Leer-Bon 2€", price: 0.0, category: "getraenke", deposit: 2, image: "https://matze45jub.github.io/Festle/Images/Glas-Bon.png" }, 
     ];
 
@@ -1346,45 +1467,57 @@ function calculatePfandReturn() {
  document.addEventListener('DOMContentLoaded', function() {
   var getraenkeTab = document.querySelector('[data-tab="getraenke"]');
   var essenTab = document.querySelector('[data-tab="essen"]');
+   var zusatz_doTab = document.querySelector('[data-tab="zusatz_do"]');
+    var zusatz_frTab = document.querySelector('[data-tab="zusatz_fr"]');
+      var zusatz_saTab = document.querySelector('[data-tab="zusatz_sa"]');
+    var zusatz_soTab = document.querySelector('[data-tab="zusatz_so"]');
   
   getraenkeTab.addEventListener('click', function(event) {
     openTab(event, 'getraenke');
   });
-  
   essenTab.addEventListener('click', function(event) {
     openTab(event, 'essen');
   });
+    zusatz_doTab.addEventListener('click', function(event) {
+    openTab(event, 'zusatz_do');
+  }); 
+      zusatz_frTab.addEventListener('click', function(event) {
+    openTab(event, 'zusatz_fr');
+  }); 
+      zusatz_saTab.addEventListener('click', function(event) {
+    openTab(event, 'zusatz_sa');
+  }); 
+      zusatz_soTab.addEventListener('click', function(event) {
+    openTab(event, 'zusatz_so');
+  }); 
+  
 });
 
      
      document.addEventListener('DOMContentLoaded', () => {
   const getraenkeContainer = document.querySelector('#getraenke .product-buttons-container');
   const essenContainer = document.querySelector('#essen .product-buttons-container');
+  const zusatz_doContainer = document.querySelector('#zusatz_do .product-buttons-container');
+  const zusatz_frContainer = document.querySelector('#zusatz_fr .product-buttons-container'); 
+  const zusatz_saContainer = document.querySelector('#zusatz_sa .product-buttons-container');
+  const zusatz_soContainer = document.querySelector('#zusatz_so .product-buttons-container'); 
   
   products.forEach(product => {
     if (product.category === 'getraenke') {
       createButton(product, getraenkeContainer);
     } else if (product.category === 'essen') {
       createButton(product, essenContainer);
+    } else if (product.category === 'zusatz_do') {
+      createButton(product, zusatz_doContainer);
+    } else if (product.category === 'zusatz_fr') {
+      createButton(product, zusatz_frContainer);
+    } else if (product.category === 'zusatz_sa') {
+      createButton(product, zusatz_saContainer);
+    } else if (product.category === 'zusatz_so') {
+      createButton(product, zusatz_soContainer);
     }
   });
 });
-     
-   
-     
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', async () => {
-    try {
-      const registration = await navigator.serviceWorker.register('/Festle/service-worker.js');
-      console.log('Service Worker erfolgreich registriert!', registration);
-    } catch (err) {
-      console.log('Service Worker-Registrierung fehlgeschlagen: ', err);
-    }
-  });
-}
-
-       
 
 </script>
 
