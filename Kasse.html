@@ -126,7 +126,7 @@ h1 {
 }
 
 .product-area .tab-button {
-  padding: 10px 20px;
+  padding: 20px 20px;
   border: none;
   background-color: #f1f1f1;
   cursor: pointer;
@@ -354,9 +354,9 @@ input[type=number] {
 }
 
 .product-button {
-  width: 65px;
-  height: 65px;
-  border-radius: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
   border: 10px;
   display: flex;
   align-items: center;
@@ -466,8 +466,7 @@ input[type=number] {
     .zusatz_so-button:hover {
       background-color: #923535;
     }
-    
-    
+   
     
     #orderTable, #orderTable th, #orderTable td {
       border: 1px solid #ccc;
@@ -516,7 +515,7 @@ input[type=number] {
 }
 
 .button-container button {
-  padding: 10px 20px;
+  padding: 0px 20px;
   font-size: 16px;
   border: none;
   border-radius: 5px;
@@ -1466,6 +1465,9 @@ function calculatePfandReturn() {
   const zusatz_saContainer = document.querySelector('#zusatz_sa .product-buttons-container');
   const zusatz_soContainer = document.querySelector('#zusatz_so .product-buttons-container'); 
   
+  document.addEventListener('contextmenu', event => event.preventDefault());   
+       
+       
   products.forEach(product => {
     if (product.category === 'getraenke') {
       createButton(product, getraenkeContainer);
