@@ -104,7 +104,7 @@ h1 {
 }
       
 .product-area, .order-area {
-  flex: 1 1 7%;
+  flex: 1 1 20%;
   overflow-y: auto;
  
   height: 100%; /* Stellt sicher, dass beide die volle Höhe des Containers einnehmen */
@@ -500,7 +500,7 @@ input[type=number] {
   display: flex;
   justify-content: center; /* Zentriert die mittleren Buttons */
   align-items: center;
-  gap: 10px; /* Abstand zwischen den Buttons */
+  gap: 5px; /* Abstand zwischen den Buttons */
   width: 100%;
   position: relative; /* Erlaubt absolute Positionierung */
 }
@@ -1468,10 +1468,7 @@ function calculatePfandReturn() {
   
   document.addEventListener('contextmenu', event => event.preventDefault());   
        
- 
-       
-
-       
+    
        
   products.forEach(product => {
     if (product.category === 'getraenke') {
