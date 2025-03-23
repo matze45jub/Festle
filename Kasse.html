@@ -104,7 +104,7 @@ h1 {
 }
       
 .product-area, .order-area {
-  flex: 1 1 10%;
+  flex: 1 1 20%;
   overflow-y: auto;
  
   height: 100%; /* Stellt sicher, dass beide die volle Höhe des Containers einnehmen */
@@ -466,7 +466,8 @@ input[type=number] {
     .zusatz_so-button:hover {
       background-color: #923535;
     }
-   
+    
+    
     
     #orderTable, #orderTable th, #orderTable td {
       border: 1px solid #ccc;
@@ -1466,6 +1467,10 @@ function calculatePfandReturn() {
   const zusatz_soContainer = document.querySelector('#zusatz_so .product-buttons-container'); 
   
   document.addEventListener('contextmenu', event => event.preventDefault());   
+       
+ 
+       
+
        
        
   products.forEach(product => {
