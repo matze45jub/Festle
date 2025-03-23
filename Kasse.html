@@ -6,8 +6,6 @@
   <title>🎊 JBO feiert mit Freunden ♥️ </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-
-
   
   <style>
     body {
@@ -97,12 +95,7 @@ h1 {
         display: none;
       }
     }
-
-      
-      
-      
-      
-          
+         
       
 .main-container {
   display: flex;
@@ -124,7 +117,6 @@ h1 {
 .order-area {
   order: 1;
 }
-
 
 
     .product-area .tabs {
@@ -156,7 +148,7 @@ h1 {
 
     
     .tab-button[data-tab="zusatz_do"] {
-  background-color: #6655e7fa;
+  background-color: #3956a4fa;
   color: white;
 }
     .tab-button[data-tab="zusatz_fr"] {
@@ -197,11 +189,7 @@ order: 1;
 .order-area td {
   font-size: 0.8rem; /* Noch kleinere Schrift für Tabelleneinträge */
 }
-    
-      
-      
-      
-      
+          
   .payment-area {
   background-color: #f0f0f0;
   padding: 1px 10px;
@@ -243,10 +231,6 @@ order: 1;
   height: auto;
   z-index: 1;
 }
-      
-      
-      
-      
       
     .header .untertitel {
       font-size: 16px;
@@ -303,7 +287,7 @@ input[type=number] {
     
     .tab-button.active[data-tab="zusatz_do"] {
   background-color: #fff;
-  border-bottom: 3px solid ##6655e7fa;
+  border-bottom: 3px solid #3956a4fa;
 }
     
         .tab-button.active[data-tab="zusatz_fr"] {
@@ -347,9 +331,7 @@ input[type=number] {
   align-items: center;
   text-align: center;
 }
-
- 
-      
+    
       .category-title {
       font-size: 18px;
       font-weight: bold;
@@ -401,7 +383,7 @@ input[type=number] {
   background-color: #E74C3C;
 }
     .zusatz_do-button {
-  background-color: #6655e7fa;
+  background-color: #3956a4fa;
 } 
     .zusatz_fr-button {
   background-color: #d1748d;
@@ -424,10 +406,7 @@ input[type=number] {
   z-index: -1;
   background: linear-gradient(to bottom, #d3d3d3, #a0a0a0);
 }
-   
-      
  
-      
       .product-button:hover {
       transform: scale(1.05);
     }
@@ -458,11 +437,11 @@ input[type=number] {
     }
 
        .zusatz_do-button {
-      background-color: #6655e7fa;
+      background-color: #3956a4fa;
       color: #FFFFFF;
     }
     .zusatz_do-button:hover {
-      background-color: #493ca6fa;
+      background-color: #273c72fa;
     }
 
         .zusatz_fr-button {
@@ -560,10 +539,7 @@ input[type=number] {
 #paymentBtn:hover {
   background-color: #C1351D; /* Dunkleres Rot beim Hover */
 }
-
-      
-      
-      
+           
     .pfand-button {
       background-color: #C0392B;
       color: white;
@@ -593,8 +569,7 @@ input[type=number] {
   margin-bottom: 1px; /* Reduzierter Abstand zwischen den einzelnen Pfand-Items */
   padding: 2px; /* Reduzierte Polsterung innerhalb der Pfand-Items */
 }
-      
-      
+    
       
     #pfandModal {
       display: none;
@@ -705,10 +680,7 @@ input[type="number"] {
 .close-btn {
   background-color: #f44336; /* Roter Hintergrund */
 }
-
-
-      
-      
+            
     #pfandModalContent button.action-btn {
       padding: 5px 10px;
       font-size: 1.2em;
@@ -802,9 +774,6 @@ input[type="number"] {
 </head>
 <body>
   <div class="header">
-  
-      
-
       
    <h1>45 Jahre Jugendblasorchester Kürnach</h1>
     <img src="https://matze45jub.github.io/Festle/Images/logo.png" alt="Logo" class="logo">
@@ -894,11 +863,7 @@ input[type="number"] {
       | Zahlung: <span id="paymentAmount">0.00</span>€
       | Rückgeld: <span id="changeAmount">0.00</span>€
     </h3>
-
-         
-
-
-         
+        
          
     <div class="button-container">
       <button id="newCustomerBtn" onclick="startNewOrder()">Neuer Kunde</button>
@@ -907,9 +872,7 @@ input[type="number"] {
       <button id="completeOrderBtn" onclick="completeOrder()">Bestellung abschließen</button>
       <button id="clearOrdersBtn" onclick="clearAllOrders()" style="background-color: yellow; color: black;">nur Admin darf löschen</button>
     </div>
-  </div>
-    
-    
+  </div>    
  
 <div id="pfandModal" class="modal">
   <div id="pfandModalContent" class="modal-content">
@@ -1192,9 +1155,7 @@ function activateTab(tabId) {
       document.getElementById("summe-spalte6").textContent = summe6.toFixed(2);
       document.getElementById("summe-spalte7").textContent = summe7.toFixed(2);
     }
-
-
-     
+   
      
     function addDecimal(a, b) {
       return Math.round((a + b) * 100) / 100;
