@@ -104,7 +104,7 @@ h1 {
 }
       
 .product-area, .order-area {
-  flex: 1 1 8%;
+  flex: 1 1 20%;
   overflow-y: auto;
  
   height: 100%; /* Stellt sicher, dass beide die volle Höhe des Containers einnehmen */
@@ -1468,8 +1468,14 @@ function calculatePfandReturn() {
   
   document.addEventListener('contextmenu', event => event.preventDefault());   
        
-    
-       
+ document.addEventListener("keydown", function(e) {
+  if (e.ctrlKey && e.key === "u") {
+    e.preventDefault();
+    alert("Diese Tastenkombination ist deaktiviert.");
+  }
+});
+
+     
   products.forEach(product => {
     if (product.category === 'getraenke') {
       createButton(product, getraenkeContainer);
