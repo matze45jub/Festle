@@ -104,7 +104,7 @@ h1 {
 }
       
 .product-area, .order-area {
-  flex: 1 1 5%;
+  flex: 1 1 20%;
   overflow-y: auto;
  
   height: 100%; /* Stellt sicher, dass beide die volle Höhe des Containers einnehmen */
@@ -983,7 +983,7 @@ input[type="number"] {
       { name: "Ciabatta Caprese mit Tomaten, Mozarella", price: 3.5, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Ciabatta_Caprese.png" },
       { name: "Portion Rettich mit Brot und Butter", price: 4, category: "essen", deposit: 0, image: "https://matze45jub.github.io/Festle/Images/Rettichbrot.png" },
       { name: "Wrap mit Schinken, Käse, Tomaten", price: 3, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Wraps.png" },  
-      { name: "Wrap mit Tomate, Parmesan u, Rucola", price: 3, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Wraps.png" },   
+      { name: "Wrap mit Tomate, Parmesan und Rucola", price: 3, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Wraps.png" },   
       { name: "Bagel mit veganer Creme und Rucola", price: 3, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Bagel.png" },
      
       { name: "Geschirr-Leer-Bon 5€", price: 0.0, category: "essen", deposit: 5, image: "https://matze45jub.github.io/Festle/Images/Geschirr-Bon.png" }, 
@@ -1379,33 +1379,39 @@ function calculatePfandReturn() {
       }
 
       let csvContent = '\uFEFF';
-      csvContent += "Datum;Produkt;Menge;Einzelpreis;Pfand;Gesamtpreis;Gesamtsumme;Pfandrückgabe;Zu zahlender Betrag;Gezahlter Betrag;Rückgeld\n";
+csvContent += "Datum;Produkt;Menge;Einzelpreis;EinzelPfand;Gesamtpreis;Gesamtpfand;Gesamtsumme;Pfandrückgabe;Zu zahlender Betrag;Gezahlter Betrag;Rückgeld\n";
 
-      orders.forEach(orderData => {
-        const date = new Date(orderData.date).toLocaleString();
-        orderData.order.forEach((item, index) => {
-          const row = [
-            `"${date}"`,
-            `"${item.name}"`,
-            item.quantity,
-            item.price.toFixed(2).replace('.', ','),
-            item.deposit.toFixed(2).replace('.', ','),
-            (item.quantity * (item.price + item.deposit)).toFixed(2).replace('.', ',')
-          ];
-          
-          if (index === 0) {
-            row.push(
-              orderData.totalSum.toFixed(2).replace('.', ','),
-              orderData.pfandReturnAmount.toFixed(2).replace('.', ','),
-              orderData.amountToPay.toFixed(2).replace('.', ','),
-              orderData.paymentAmount.toFixed(2).replace('.', ','),
-              orderData.changeAmount.toFixed(2).replace('.', ',')
-            );
-          }
-          
-          csvContent += row.join(";") + "\n";
-        });
-      });
+orders.forEach(orderData => {
+  const date = new Date(orderData.date).toLocaleString();
+  const totalDeposit = orderData.order.reduce((sum, item) => sum + item.quantity * item.deposit, 0);
+  
+  orderData.order.forEach((item, index) => {
+    const row = [
+      `"${date}"`,
+      `"${item.name}"`,
+      item.quantity,
+      item.price.toFixed(2).replace('.', ','),
+      item.deposit.toFixed(2).replace('.', ','),
+      (item.quantity * (item.price + item.deposit)).toFixed(2).replace('.', ',')
+    ];
+    
+    if (index === 0) {
+      row.push(
+        totalDeposit.toFixed(2).replace('.', ','),
+        orderData.totalSum.toFixed(2).replace('.', ','),
+        orderData.pfandReturnAmount.toFixed(2).replace('.', ','),
+        orderData.amountToPay.toFixed(2).replace('.', ','),
+        orderData.paymentAmount.toFixed(2).replace('.', ','),
+        orderData.changeAmount.toFixed(2).replace('.', ',')
+      );
+    } else {
+      row.push('', '', '', '', '', '');
+    }
+    
+    csvContent += row.join(";") + "\n";
+  });
+});
+
 
       const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
       const link = document.createElement("a");
@@ -1468,14 +1474,11 @@ function calculatePfandReturn() {
   
   document.addEventListener('contextmenu', event => event.preventDefault());   
        
- document.addEventListener("keydown", function(e) {
-  if (e.ctrlKey && e.key === "u") {
-    e.preventDefault();
-    alert("Diese Tastenkombination ist deaktiviert.");
-  }
-});
+ 
+       
 
-     
+       
+       
   products.forEach(product => {
     if (product.category === 'getraenke') {
       createButton(product, getraenkeContainer);
